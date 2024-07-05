@@ -1,0 +1,52 @@
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #eee;
+}
+
+.search-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+.weather-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.weather-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.weather-detail {
+  text-align: center;
+  margin: 10px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}

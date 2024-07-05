@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import './info.css';
 
-const key = '4103512bb36f877fe2d2bbf97cb3d386';
+const key = "4103512bb36f877fe2d2bbf97cb3d386";
 
 function Weather() {
-  const [city, setCity] = useState('pune');
+  const [city, setCity] = useState('Pune');
   const [cityName, setCityName] = useState('');
   const [weatherType, setWeatherType] = useState('');
   const [temperature, setTemperature] = useState('');
@@ -11,6 +12,7 @@ function Weather() {
   const [windSpeed, setWindSpeed] = useState('');
   const [feelsLike, setFeelsLike] = useState('');
   const [inputValue, setInputValue] = useState('');
+  const [error , setError] = useState(null);
 
   async function getWeatherData() {
     try {
@@ -23,9 +25,10 @@ function Weather() {
       setHumidity(data.main.humidity);
       setWindSpeed(data.wind.speed);
       setFeelsLike((parseFloat(data.main.feels_like) - 273.15).toFixed(2));
+      setError(null);
     } catch (error) {
+      setError(error.message);
       console.error('Error fetching weather data:', error);
-      // Handle error state here if needed
     }
   }
 
@@ -42,56 +45,46 @@ function Weather() {
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh',
-      backgroundColor: '#f0f0f0'
-    }}>
-      <div style={{
-        padding: '15px',
-        fontFamily: 'Arial, sans-serif',
-        maxWidth: '400px',
-        border: '1px solid black',
-        borderRadius: '8px',
-        textAlign: 'center',
-        fontSize: '14px',
-        backgroundColor: 'white'
-      }}>
-
-        <div style={{ textAlign: 'center', margin: '20px 0' }}>
-          <input
-            type="text"
-            placeholder="Enter city name..."
-            style={{ padding: '8px', fontSize: '14px', marginRight: '10px' }}
-            value={inputValue}
-            onChange={handleInputChange}
-          />
-          <button type='button' onClick={changeCity} style={{ padding: '8px 16px', fontSize: '14px' }}>Search</button>
+    <div className="weather-container">
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Enter city name..."
+          className="search-input"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <button type='button' onClick={changeCity} className="search-button">Search</button>
+      </div>
+      {error ? (
+        <div className="error-message">{error}</div>
+       ) : (
+          <>
+          <div className="weather-info">
+          <h2>{cityName}</h2>
+          <h3>{weatherType}</h3>
         </div>
 
-        <h2 style={{ fontSize: '16px', margin: '10px 0' }}>{cityName}</h2>
-        <h3 style={{ fontSize: '14px', margin: '10px 0', color: '#666' }}>{weatherType}</h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center', marginTop: '15px' }}>
-          <div style={{ flex: '1 1 45%', border: '1px solid black', padding: '8px', fontSize: '12px' }}>
-            <h4 style={{ fontSize: '14px', margin: '5px 0' }}>Temperature</h4>
+        <div className="weather-details">
+          <div className="weather-detail">
+            <h4>Temperature</h4>
             <p>{temperature} °C</p>
           </div>
-          <div style={{ flex: '1 1 45%', border: '1px solid black', padding: '8px', fontSize: '12px' }}>
-            <h4 style={{ fontSize: '14px', margin: '5px 0' }}>Humidity</h4>
+          <div className="weather-detail">
+            <h4>Humidity</h4>
             <p>{humidity} %</p>
           </div>
-          <div style={{ flex: '1 1 45%', border: '1px solid black', padding: '8px', fontSize: '12px' }}>
-            <h4 style={{ fontSize: '14px', margin: '5px 0' }}>Wind Speed</h4>
+          <div className="weather-detail">
+            <h4>Wind Speed</h4>
             <p>{windSpeed} m/s</p>
           </div>
-          <div style={{ flex: '1 1 45%', border: '1px solid black', padding: '8px', fontSize: '12px' }}>
-            <h4 style={{ fontSize: '14px', margin: '5px 0' }}>Feels Like</h4>
+          <div className="weather-detail">
+            <h4>Feels Like</h4>
             <p>{feelsLike} °C</p>
           </div>
         </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }
