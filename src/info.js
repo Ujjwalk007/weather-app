@@ -57,7 +57,7 @@ function Weather() {
         <button type='button' onClick={changeCity} className="search-button">Search</button>
       </div>
       {error ? (
-        <div className="error-message">{error}</div>
+        <div className="error-message">City not Found</div>
        ) : (
           <>
           <div className="weather-info">
