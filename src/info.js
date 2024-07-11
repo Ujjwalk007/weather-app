@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './info.css';
 
-const key = "4103512bb36f877fe2d2bbf97cb3d386";
+const key = process.env.REACT_APP_climatekey;
 
 function Weather() {
   const [city, setCity] = useState('Pune');
