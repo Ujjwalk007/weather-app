@@ -1,11 +1,11 @@
 import './App.css';
-import { Weather } from './info';
+import { Page } from './info'
 
 function App() {
   return (
     <div className="App">
 
-      
+      <Page/>
 
 
     </div>
