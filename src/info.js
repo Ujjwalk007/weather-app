@@ -10,7 +10,10 @@ function Page()
   
 
   const [city,Setcity] = useState('Latur');
-  const [weather,Setweather] = useState();
+  const [weatherType,setweatherType] = useState('clear sky');
+  const [temp,setTemp] = useState('33');
+  const [feels,setfeels] = useState('31');
+  
 
     
 
@@ -20,7 +23,6 @@ function Page()
     const [cityInput,setcityInput] = useState('');
     function cityInputHandler(e){
       setcityInput(e.target.value);
-      //console.log(cityInput);
     }
 
 
@@ -61,7 +63,7 @@ function Page()
 
         <div className="left">
           
-          <WeatherCard />
+          <WeatherCard cityname={city} weathertype={weatherType} temperature={temp} feelslike={feels}/>
           {/*  Details */}
           {/*  HourlyForeCast */}
           
