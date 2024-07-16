@@ -10,9 +10,33 @@ function Page()
   
 
   const [city,Setcity] = useState('Latur');
-  const [weatherType,setweatherType] = useState('clear sky');
-  const [temp,setTemp] = useState('33');
-  const [feels,setfeels] = useState('31');
+  const [weatherType,setweatherType] = useState('');
+  const [temp,setTemp] = useState(null);
+  const [feels,setfeels] = useState(null);
+
+
+  const [err,seterr] = useState(false);
+
+  useEffect(()=>{
+
+    async function fun()
+    {
+      const resp = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_climatekey}`)
+      const data = await resp.json();
+
+      
+        setTemp((parseFloat(data.main.temp)-273).toFixed(1));
+        setweatherType((data.weather[0].main).toLowerCase());
+        setfeels((parseFloat(data.main.feels_like)-273).toFixed(1));
+
+    }
+
+    fun();
+
+    
+  },[]);
+
+  
   
 
     
@@ -23,6 +47,46 @@ function Page()
     const [cityInput,setcityInput] = useState('');
     function cityInputHandler(e){
       setcityInput(e.target.value);
+    }
+
+    async function search()
+    {
+
+     
+
+      try{
+
+        const resp = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${process.env.REACT_APP_climatekey}`)
+        
+        if(!resp.ok){
+          throw new Error('City not found');
+        }
+
+        let data = await resp.json();
+
+        Setcity(cityInput);
+        setTemp((parseFloat(data.main.temp)-273).toFixed(1));
+        setweatherType((data.weather[0].main).toLowerCase());
+        setfeels((parseFloat(data.main.feels_like)-273).toFixed(1));
+        
+        console.log(data.name);
+        
+
+
+      }catch(err)
+      {
+        if(err)
+          {
+            console.log(err);
+            seterr(true);
+            setTimeout(() => {
+              seterr(false);
+            }, 3000);
+    
+
+          }
+      }
+      
     }
 
 
@@ -40,7 +104,7 @@ function Page()
             />
             <button type="button" className="btn btn-primary" 
             style={{marginBottom:'6px',height:'40px',marginRight:'200px',marginLeft:'10px'}}
-            onClick={()=>Setcity(cityInput)}
+            onClick={search}
             >
               Search
             </button>
@@ -55,7 +119,17 @@ function Page()
 
   return(
 
+    
+
 <div className="Page">
+
+      {
+      err && (<div class="alert alert-warning" role="alert">
+        Entered Invalid City !!
+      </div>)
+      }
+
+
   <SearchBar />
 
   <div className="body">
@@ -77,6 +151,8 @@ function Page()
         </div>
 
       </div>
+
+      
 
 </div>
 
