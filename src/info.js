@@ -15,7 +15,7 @@ function Page()
   const [feels,setfeels] = useState(null);
 
 
-  const [err,seterr] = useState(false);
+  const [err,setErr] = useState(false);
 
   useEffect(()=>{
 
@@ -78,9 +78,9 @@ function Page()
         if(err)
           {
             console.log(err);
-            seterr(true);
+            setErr(true);
             setTimeout(() => {
-              seterr(false);
+              setErr(false);
             }, 3000);
     
 
@@ -136,12 +136,14 @@ function Page()
 
 <div className="Page">
 
-      {
-      err && (<div class="alert alert-warning" role="alert">
-        Entered Invalid City !!
-      </div>)
-      }
-
+  {err && (
+    <div className="popup-message">
+      <div className="popup-content">
+        <p>Entered Invalid City!</p>
+        <button onClick={() => setErr(false)}>Close</button>
+      </div>
+    </div>
+  )}
 
   <SearchBar />
 
