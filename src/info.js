@@ -91,26 +91,39 @@ function Page()
 
 
       return (
+        <header className="header">
       <div className="searchbar">
-        <img src={weatherIcon} alt='weathericon' style={{height:'80px',width:'80px'}}/ >
-
-          <div >
-          <input type="text"
+        <img src={weatherIcon} alt="weather icon" className="weather-icon" />
+        <div className="search-input-container">
+          <input
+            type="search"
             placeholder="Enter City Name"
             onChange={cityInputHandler}
             value={cityInput}
-            style={{height:'40px',width:'400px',marginTop:'10px'}}
-            
+            className="search-input"
+          />
+          <svg
+            className="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M12.9 14.32a8 8 0 111.414-1.415l5.387 5.386a1 1 0 01-1.414 1.415l-5.386-5.387zM8 14a6 6 0 100-12 6 6 0 000 12z"
+              clipRule="evenodd"
             />
-            <button type="button" className="btn btn-primary" 
-            style={{marginBottom:'6px',height:'40px',marginRight:'200px',marginLeft:'10px'}}
-            onClick={search}
-            >
-              Search
-            </button>
-          </div>
-            
-          </div>
+          </svg>
+        </div>
+        <button
+          type="button"
+          className="search-button"
+          onClick={search}
+        >
+          Search
+        </button>
+      </div>
+    </header>
       );
 
   }

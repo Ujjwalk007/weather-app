@@ -1,35 +1,133 @@
-.body{
-        
-    
-
-
-
-}
-
-.weathercard{
-    margin-top: 20px;
-    margin-left: 10px;
-    padding: 5px;
-    border: 2px solid black;
-    
-    height:300px;
-    width:400px;
-
+/* Header styling */
+.header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-
-    
-}
-
-.searchbar{
+    height: 64px; /* Adjust height as needed */
+    padding: 0 16px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Search bar container */
+  .searchbar {
     display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align to the right */
+    width: 100%;
+  }
+  
+  /* Weather icon */
+  .weather-icon {
+    height: 40px;
+    width: 40px;
+  }
+  
+  /* Search input container */
+  .search-input-container {
+    position: relative; /* Change to relative for proper positioning */
+    width: 100%;
+    max-width: 300px;
+    margin-left: 16px;
+  }
+  
+  /* Search input */
+  .search-input {
+    width: 100%;
+    padding: 8px 16px 8px 40px;
+    border: 1px solid #ccc;
+    border-radius: 9999px;
+    outline: none;
+    transition: box-shadow 0.3s;
+  }
+  
+  .search-input:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  }
+  
+  /* Search icon */
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 16px;
+    width: 16px;
+    color: #999;
+  }
+  
+  /* Search button */
+  .search-button {
+    margin-left: 16px;
+    padding: 8px 16px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }  
+  
+  .weather-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* space-y-4 */
+    width: 400px; /* Fixed width for the card */
+    margin: 20px 10px; /* Adjust margins as needed */
+  }
+  
+  .weather-card-main {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    background-color: bisque;
-    border-bottom: 2px solid goldenrod;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-.left{
-    
-}
-
+    padding: 1rem; /* p-4 */
+    background-color: white;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* shadow */
+    background-size: cover;
+    height: 300px; /* Fixed height for the card */
+  }
+  
+  .text-lg {
+    font-size: 1.125rem; /* text-lg */
+  }
+  
+  .font-semibold {
+    font-weight: 600; /* font-semibold */
+  }
+  
+  .text-gray-600 {
+    color: #718096; /* text-gray-600 */
+  }
+  
+  .text-4xl {
+    font-size: 2.25rem; /* text-4xl */
+  }
+  
+  .font-bold {
+    font-weight: 700; /* font-bold */
+  }
+  
+  .text-sm {
+    font-size: 0.875rem; /* text-sm */
+  }
+  
+  .weather-card-temp {
+    font-size: 2.5rem; /* text-4xl */
+    font-weight: bold; /* font-bold */
+  }
+  
+  .weather-card-time {
+    text-align: right;
+  }
+  
+  .weather-card-subtext {
+    font-size: 0.875rem; /* text-sm */
+    color: #718096; /* text-gray-600 */
+  }
+  
