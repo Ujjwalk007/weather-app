@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { WeatherCard } from "./WeatherVisual";
 import weatherIcon from './assets/weathericonpng.png';
+import { Details } from "./Details";
 import "./index.css"
 
 
@@ -13,6 +14,11 @@ function Page()
   const [weatherType,setweatherType] = useState('');
   const [temp,setTemp] = useState(null);
   const [feels,setfeels] = useState(null);
+
+
+  const [pressure,setPressure] = useState('');
+  const [humidity,setHumidity] = useState('');
+  const [wind,setwind] = useState('')
 
 
   const [err,setErr] = useState(false);
@@ -28,6 +34,10 @@ function Page()
         setTemp((parseFloat(data.main.temp)-273).toFixed(1));
         setweatherType((data.weather[0].main).toLowerCase());
         setfeels((parseFloat(data.main.feels_like)-273).toFixed(1));
+
+        setHumidity(data.main.humidity);
+        setwind(data.wind.speed);
+        setPressure(data.main.pressure);
 
     }
 
@@ -68,6 +78,10 @@ function Page()
         setTemp((parseFloat(data.main.temp)-273).toFixed(1));
         setweatherType((data.weather[0].main).toLowerCase());
         setfeels((parseFloat(data.main.feels_like)-273).toFixed(1));
+
+        setHumidity(data.main.humidity);
+        setwind(data.wind.speed);
+        setPressure(data.main.pressure);
         
         console.log(data.name);
         
@@ -153,7 +167,7 @@ function Page()
         <div className="left">
           
           <WeatherCard cityname={city} weathertype={weatherType} temperature={temp} feelslike={feels}/>
-          {/*  Details */}
+          <Details humidity={humidity} windspeed={wind} pressure={pressure}/>
           {/*  HourlyForeCast */}
           
 

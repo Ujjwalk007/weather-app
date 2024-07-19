@@ -159,4 +159,19 @@
   .popup-content button:hover {
     background-color: #0056b3; /* Darker shade on hover */
   }
+
+  .left{
+
+    width: 60%;
+
+  }
+
+  .details{
+    display:flex;
+    justify-content:space-around;
+    margin-left: 4px;
+    border: 2px solid black;
+    border-radius: 4cm;
+
+  }
   
