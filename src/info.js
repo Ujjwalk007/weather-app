@@ -3,6 +3,7 @@ import { WeatherCard } from "./WeatherVisual";
 import weatherIcon from './assets/weathericonpng.png';
 import { Details } from "./Details";
 import "./index.css"
+import { HourlyForeCast } from "./Hourly";
 
 
 
@@ -19,6 +20,9 @@ function Page()
   const [pressure,setPressure] = useState('');
   const [humidity,setHumidity] = useState('');
   const [wind,setwind] = useState('')
+
+  const [sunrise,setsunrise] = useState('');
+  const [sunset,setsunset] = useState('');
 
 
   const [err,setErr] = useState(false);
@@ -38,6 +42,21 @@ function Page()
         setHumidity(data.main.humidity);
         setwind(data.wind.speed);
         setPressure(data.main.pressure);
+
+        let sunR = data.sys.sunrise;
+        let sunS = data.sys.sunset;
+
+        var sunrise_time = new Date(sunR*1000)
+        var sunset_time = new Date(sunS*1000)
+
+        const options = { hour: '2-digit', minute: '2-digit', hour12: true };
+
+
+        const sunriseTime = sunrise_time.toLocaleTimeString('en-US', options);
+        const sunsetTime = sunset_time.toLocaleTimeString('en-US', options);
+
+        setsunrise(sunriseTime);
+        setsunset(sunsetTime);
 
     }
 
@@ -84,6 +103,21 @@ function Page()
         setPressure(data.main.pressure);
         
         console.log(data.name);
+
+        let sunR = data.sys.sunrise;
+        let sunS = data.sys.sunset;
+
+        var sunrise_time = new Date(sunR*1000)
+        var sunset_time = new Date(sunS*1000)
+
+        const options = { hour: '2-digit', minute: '2-digit', hour12: true };
+
+
+        const sunriseTime = sunrise_time.toLocaleTimeString('en-US', options);
+        const sunsetTime = sunset_time.toLocaleTimeString('en-US', options);
+
+        setsunrise(sunriseTime);
+        setsunset(sunsetTime);
         
 
 
@@ -167,8 +201,8 @@ function Page()
         <div className="left">
           
           <WeatherCard cityname={city} weathertype={weatherType} temperature={temp} feelslike={feels}/>
-          <Details humidity={humidity} windspeed={wind} pressure={pressure}/>
-          {/*  HourlyForeCast */}
+          <Details humidity={humidity} windspeed={wind} pressure={pressure} sunrise={sunrise} sunset={sunset}/>
+          <HourlyForeCast city={city}/>
           
 
         </div>

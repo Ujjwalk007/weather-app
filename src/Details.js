@@ -30,6 +30,16 @@ function Details(props)
                 <label>{props.pressure} hPa</label>
             </div>
 
+            <div>
+                <label>Sunrise</label><br/>
+                <label>{props.sunrise}</label>
+            </div>
+
+            <div>
+                <label>Sunset</label><br/>
+                <label>{props.sunset}</label>
+            </div>
+
         </div>
     )
 }

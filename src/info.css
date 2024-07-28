@@ -1,0 +1,59 @@
+.HourBox {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to next line if needed */
+    justify-content: space-between; /* Center items horizontally */
+    gap: 15px; /* Space between items */
+    padding: 20px; /* Padding around the container */
+    border-radius: 10px; /* Rounded corners for the container */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.HourListItem {
+    display: flex;
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    height: 50px;
+    width: 100px;
+    padding: 10px; /* Padding inside each box */
+    background-color: #fff; /* White background for each item */
+    border: 2px solid #e0e0e0; /* Light border around each item */
+    border-radius: 10px; /* Rounded corners for each box */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-family: 'Arial', sans-serif; /* Clean font */
+    font-size: 16px; /* Slightly larger font size */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Darker text color */
+    text-align: center; /* Center text alignment */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effects */
+}
+
+.HourListItem:hover {
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+}
+
+h2 {
+    
+    text-transform: uppercase;
+    font-family: 'Gambetta', serif;
+    letter-spacing: -3px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
+    color: rgb(18, 18, 18);
+    outline: none;
+    text-align: center;
+  }
+  
+  h2:hover {
+    font-variation-settings: "wght" 582; 
+    letter-spacing: 1px;
+  }
+  
+  p {
+    font-size: 1.2em;
+    line-height: 150%;
+    text-align: center;
+    color: MintCream;
+    letter-spacing: .5px;
+  }
